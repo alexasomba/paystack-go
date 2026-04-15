@@ -17,11 +17,11 @@ import (
 	"fmt"
 )
 
-// checks if the SubaccountListResponseMeta type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SubaccountListResponseMeta{}
+// checks if the BalanceFetchLedgerResponseMeta type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BalanceFetchLedgerResponseMeta{}
 
-// SubaccountListResponseMeta struct for SubaccountListResponseMeta
-type SubaccountListResponseMeta struct {
+// BalanceFetchLedgerResponseMeta struct for BalanceFetchLedgerResponseMeta
+type BalanceFetchLedgerResponseMeta struct {
 	Total int32 `json:"total"`
 	Skipped int32 `json:"skipped"`
 	PerPage int32 `json:"perPage"`
@@ -29,14 +29,14 @@ type SubaccountListResponseMeta struct {
 	PageCount int32 `json:"pageCount"`
 }
 
-type _SubaccountListResponseMeta SubaccountListResponseMeta
+type _BalanceFetchLedgerResponseMeta BalanceFetchLedgerResponseMeta
 
-// NewSubaccountListResponseMeta instantiates a new SubaccountListResponseMeta object
+// NewBalanceFetchLedgerResponseMeta instantiates a new BalanceFetchLedgerResponseMeta object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubaccountListResponseMeta(total int32, skipped int32, perPage int32, page int32, pageCount int32) *SubaccountListResponseMeta {
-	this := SubaccountListResponseMeta{}
+func NewBalanceFetchLedgerResponseMeta(total int32, skipped int32, perPage int32, page int32, pageCount int32) *BalanceFetchLedgerResponseMeta {
+	this := BalanceFetchLedgerResponseMeta{}
 	this.Total = total
 	this.Skipped = skipped
 	this.PerPage = perPage
@@ -45,16 +45,16 @@ func NewSubaccountListResponseMeta(total int32, skipped int32, perPage int32, pa
 	return &this
 }
 
-// NewSubaccountListResponseMetaWithDefaults instantiates a new SubaccountListResponseMeta object
+// NewBalanceFetchLedgerResponseMetaWithDefaults instantiates a new BalanceFetchLedgerResponseMeta object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSubaccountListResponseMetaWithDefaults() *SubaccountListResponseMeta {
-	this := SubaccountListResponseMeta{}
+func NewBalanceFetchLedgerResponseMetaWithDefaults() *BalanceFetchLedgerResponseMeta {
+	this := BalanceFetchLedgerResponseMeta{}
 	return &this
 }
 
 // GetTotal returns the Total field value
-func (o *SubaccountListResponseMeta) GetTotal() int32 {
+func (o *BalanceFetchLedgerResponseMeta) GetTotal() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -65,7 +65,7 @@ func (o *SubaccountListResponseMeta) GetTotal() int32 {
 
 // GetTotalOk returns a tuple with the Total field value
 // and a boolean to check if the value has been set.
-func (o *SubaccountListResponseMeta) GetTotalOk() (*int32, bool) {
+func (o *BalanceFetchLedgerResponseMeta) GetTotalOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -73,12 +73,12 @@ func (o *SubaccountListResponseMeta) GetTotalOk() (*int32, bool) {
 }
 
 // SetTotal sets field value
-func (o *SubaccountListResponseMeta) SetTotal(v int32) {
+func (o *BalanceFetchLedgerResponseMeta) SetTotal(v int32) {
 	o.Total = v
 }
 
 // GetSkipped returns the Skipped field value
-func (o *SubaccountListResponseMeta) GetSkipped() int32 {
+func (o *BalanceFetchLedgerResponseMeta) GetSkipped() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -89,7 +89,7 @@ func (o *SubaccountListResponseMeta) GetSkipped() int32 {
 
 // GetSkippedOk returns a tuple with the Skipped field value
 // and a boolean to check if the value has been set.
-func (o *SubaccountListResponseMeta) GetSkippedOk() (*int32, bool) {
+func (o *BalanceFetchLedgerResponseMeta) GetSkippedOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -97,12 +97,12 @@ func (o *SubaccountListResponseMeta) GetSkippedOk() (*int32, bool) {
 }
 
 // SetSkipped sets field value
-func (o *SubaccountListResponseMeta) SetSkipped(v int32) {
+func (o *BalanceFetchLedgerResponseMeta) SetSkipped(v int32) {
 	o.Skipped = v
 }
 
 // GetPerPage returns the PerPage field value
-func (o *SubaccountListResponseMeta) GetPerPage() int32 {
+func (o *BalanceFetchLedgerResponseMeta) GetPerPage() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -113,7 +113,7 @@ func (o *SubaccountListResponseMeta) GetPerPage() int32 {
 
 // GetPerPageOk returns a tuple with the PerPage field value
 // and a boolean to check if the value has been set.
-func (o *SubaccountListResponseMeta) GetPerPageOk() (*int32, bool) {
+func (o *BalanceFetchLedgerResponseMeta) GetPerPageOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -121,12 +121,12 @@ func (o *SubaccountListResponseMeta) GetPerPageOk() (*int32, bool) {
 }
 
 // SetPerPage sets field value
-func (o *SubaccountListResponseMeta) SetPerPage(v int32) {
+func (o *BalanceFetchLedgerResponseMeta) SetPerPage(v int32) {
 	o.PerPage = v
 }
 
 // GetPage returns the Page field value
-func (o *SubaccountListResponseMeta) GetPage() int32 {
+func (o *BalanceFetchLedgerResponseMeta) GetPage() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -137,7 +137,7 @@ func (o *SubaccountListResponseMeta) GetPage() int32 {
 
 // GetPageOk returns a tuple with the Page field value
 // and a boolean to check if the value has been set.
-func (o *SubaccountListResponseMeta) GetPageOk() (*int32, bool) {
+func (o *BalanceFetchLedgerResponseMeta) GetPageOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -145,12 +145,12 @@ func (o *SubaccountListResponseMeta) GetPageOk() (*int32, bool) {
 }
 
 // SetPage sets field value
-func (o *SubaccountListResponseMeta) SetPage(v int32) {
+func (o *BalanceFetchLedgerResponseMeta) SetPage(v int32) {
 	o.Page = v
 }
 
 // GetPageCount returns the PageCount field value
-func (o *SubaccountListResponseMeta) GetPageCount() int32 {
+func (o *BalanceFetchLedgerResponseMeta) GetPageCount() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -161,7 +161,7 @@ func (o *SubaccountListResponseMeta) GetPageCount() int32 {
 
 // GetPageCountOk returns a tuple with the PageCount field value
 // and a boolean to check if the value has been set.
-func (o *SubaccountListResponseMeta) GetPageCountOk() (*int32, bool) {
+func (o *BalanceFetchLedgerResponseMeta) GetPageCountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -169,11 +169,11 @@ func (o *SubaccountListResponseMeta) GetPageCountOk() (*int32, bool) {
 }
 
 // SetPageCount sets field value
-func (o *SubaccountListResponseMeta) SetPageCount(v int32) {
+func (o *BalanceFetchLedgerResponseMeta) SetPageCount(v int32) {
 	o.PageCount = v
 }
 
-func (o SubaccountListResponseMeta) MarshalJSON() ([]byte, error) {
+func (o BalanceFetchLedgerResponseMeta) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -181,7 +181,7 @@ func (o SubaccountListResponseMeta) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SubaccountListResponseMeta) ToMap() (map[string]interface{}, error) {
+func (o BalanceFetchLedgerResponseMeta) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["total"] = o.Total
 	toSerialize["skipped"] = o.Skipped
@@ -191,7 +191,7 @@ func (o SubaccountListResponseMeta) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SubaccountListResponseMeta) UnmarshalJSON(data []byte) (err error) {
+func (o *BalanceFetchLedgerResponseMeta) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -217,53 +217,53 @@ func (o *SubaccountListResponseMeta) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varSubaccountListResponseMeta := _SubaccountListResponseMeta{}
+	varBalanceFetchLedgerResponseMeta := _BalanceFetchLedgerResponseMeta{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSubaccountListResponseMeta)
+	err = decoder.Decode(&varBalanceFetchLedgerResponseMeta)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SubaccountListResponseMeta(varSubaccountListResponseMeta)
+	*o = BalanceFetchLedgerResponseMeta(varBalanceFetchLedgerResponseMeta)
 
 	return err
 }
 
-type NullableSubaccountListResponseMeta struct {
-	value *SubaccountListResponseMeta
+type NullableBalanceFetchLedgerResponseMeta struct {
+	value *BalanceFetchLedgerResponseMeta
 	isSet bool
 }
 
-func (v NullableSubaccountListResponseMeta) Get() *SubaccountListResponseMeta {
+func (v NullableBalanceFetchLedgerResponseMeta) Get() *BalanceFetchLedgerResponseMeta {
 	return v.value
 }
 
-func (v *NullableSubaccountListResponseMeta) Set(val *SubaccountListResponseMeta) {
+func (v *NullableBalanceFetchLedgerResponseMeta) Set(val *BalanceFetchLedgerResponseMeta) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSubaccountListResponseMeta) IsSet() bool {
+func (v NullableBalanceFetchLedgerResponseMeta) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSubaccountListResponseMeta) Unset() {
+func (v *NullableBalanceFetchLedgerResponseMeta) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSubaccountListResponseMeta(val *SubaccountListResponseMeta) *NullableSubaccountListResponseMeta {
-	return &NullableSubaccountListResponseMeta{value: val, isSet: true}
+func NewNullableBalanceFetchLedgerResponseMeta(val *BalanceFetchLedgerResponseMeta) *NullableBalanceFetchLedgerResponseMeta {
+	return &NullableBalanceFetchLedgerResponseMeta{value: val, isSet: true}
 }
 
-func (v NullableSubaccountListResponseMeta) MarshalJSON() ([]byte, error) {
+func (v NullableBalanceFetchLedgerResponseMeta) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSubaccountListResponseMeta) UnmarshalJSON(src []byte) error {
+func (v *NullableBalanceFetchLedgerResponseMeta) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -17,26 +17,26 @@ import (
 	"fmt"
 )
 
-// checks if the BulkChargeListResponseMeta type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BulkChargeListResponseMeta{}
+// checks if the PaymentRequestListResponseMeta type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaymentRequestListResponseMeta{}
 
-// BulkChargeListResponseMeta struct for BulkChargeListResponseMeta
-type BulkChargeListResponseMeta struct {
+// PaymentRequestListResponseMeta struct for PaymentRequestListResponseMeta
+type PaymentRequestListResponseMeta struct {
 	Total int32 `json:"total"`
 	Skipped int32 `json:"skipped"`
-	PerPage BulkChargeListResponseMetaPerPage `json:"perPage"`
+	PerPage MetaPerPage `json:"perPage"`
 	Page int32 `json:"page"`
 	PageCount int32 `json:"pageCount"`
 }
 
-type _BulkChargeListResponseMeta BulkChargeListResponseMeta
+type _PaymentRequestListResponseMeta PaymentRequestListResponseMeta
 
-// NewBulkChargeListResponseMeta instantiates a new BulkChargeListResponseMeta object
+// NewPaymentRequestListResponseMeta instantiates a new PaymentRequestListResponseMeta object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBulkChargeListResponseMeta(total int32, skipped int32, perPage BulkChargeListResponseMetaPerPage, page int32, pageCount int32) *BulkChargeListResponseMeta {
-	this := BulkChargeListResponseMeta{}
+func NewPaymentRequestListResponseMeta(total int32, skipped int32, perPage MetaPerPage, page int32, pageCount int32) *PaymentRequestListResponseMeta {
+	this := PaymentRequestListResponseMeta{}
 	this.Total = total
 	this.Skipped = skipped
 	this.PerPage = perPage
@@ -45,16 +45,16 @@ func NewBulkChargeListResponseMeta(total int32, skipped int32, perPage BulkCharg
 	return &this
 }
 
-// NewBulkChargeListResponseMetaWithDefaults instantiates a new BulkChargeListResponseMeta object
+// NewPaymentRequestListResponseMetaWithDefaults instantiates a new PaymentRequestListResponseMeta object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewBulkChargeListResponseMetaWithDefaults() *BulkChargeListResponseMeta {
-	this := BulkChargeListResponseMeta{}
+func NewPaymentRequestListResponseMetaWithDefaults() *PaymentRequestListResponseMeta {
+	this := PaymentRequestListResponseMeta{}
 	return &this
 }
 
 // GetTotal returns the Total field value
-func (o *BulkChargeListResponseMeta) GetTotal() int32 {
+func (o *PaymentRequestListResponseMeta) GetTotal() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -65,7 +65,7 @@ func (o *BulkChargeListResponseMeta) GetTotal() int32 {
 
 // GetTotalOk returns a tuple with the Total field value
 // and a boolean to check if the value has been set.
-func (o *BulkChargeListResponseMeta) GetTotalOk() (*int32, bool) {
+func (o *PaymentRequestListResponseMeta) GetTotalOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -73,12 +73,12 @@ func (o *BulkChargeListResponseMeta) GetTotalOk() (*int32, bool) {
 }
 
 // SetTotal sets field value
-func (o *BulkChargeListResponseMeta) SetTotal(v int32) {
+func (o *PaymentRequestListResponseMeta) SetTotal(v int32) {
 	o.Total = v
 }
 
 // GetSkipped returns the Skipped field value
-func (o *BulkChargeListResponseMeta) GetSkipped() int32 {
+func (o *PaymentRequestListResponseMeta) GetSkipped() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -89,7 +89,7 @@ func (o *BulkChargeListResponseMeta) GetSkipped() int32 {
 
 // GetSkippedOk returns a tuple with the Skipped field value
 // and a boolean to check if the value has been set.
-func (o *BulkChargeListResponseMeta) GetSkippedOk() (*int32, bool) {
+func (o *PaymentRequestListResponseMeta) GetSkippedOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -97,14 +97,14 @@ func (o *BulkChargeListResponseMeta) GetSkippedOk() (*int32, bool) {
 }
 
 // SetSkipped sets field value
-func (o *BulkChargeListResponseMeta) SetSkipped(v int32) {
+func (o *PaymentRequestListResponseMeta) SetSkipped(v int32) {
 	o.Skipped = v
 }
 
 // GetPerPage returns the PerPage field value
-func (o *BulkChargeListResponseMeta) GetPerPage() BulkChargeListResponseMetaPerPage {
+func (o *PaymentRequestListResponseMeta) GetPerPage() MetaPerPage {
 	if o == nil {
-		var ret BulkChargeListResponseMetaPerPage
+		var ret MetaPerPage
 		return ret
 	}
 
@@ -113,7 +113,7 @@ func (o *BulkChargeListResponseMeta) GetPerPage() BulkChargeListResponseMetaPerP
 
 // GetPerPageOk returns a tuple with the PerPage field value
 // and a boolean to check if the value has been set.
-func (o *BulkChargeListResponseMeta) GetPerPageOk() (*BulkChargeListResponseMetaPerPage, bool) {
+func (o *PaymentRequestListResponseMeta) GetPerPageOk() (*MetaPerPage, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -121,12 +121,12 @@ func (o *BulkChargeListResponseMeta) GetPerPageOk() (*BulkChargeListResponseMeta
 }
 
 // SetPerPage sets field value
-func (o *BulkChargeListResponseMeta) SetPerPage(v BulkChargeListResponseMetaPerPage) {
+func (o *PaymentRequestListResponseMeta) SetPerPage(v MetaPerPage) {
 	o.PerPage = v
 }
 
 // GetPage returns the Page field value
-func (o *BulkChargeListResponseMeta) GetPage() int32 {
+func (o *PaymentRequestListResponseMeta) GetPage() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -137,7 +137,7 @@ func (o *BulkChargeListResponseMeta) GetPage() int32 {
 
 // GetPageOk returns a tuple with the Page field value
 // and a boolean to check if the value has been set.
-func (o *BulkChargeListResponseMeta) GetPageOk() (*int32, bool) {
+func (o *PaymentRequestListResponseMeta) GetPageOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -145,12 +145,12 @@ func (o *BulkChargeListResponseMeta) GetPageOk() (*int32, bool) {
 }
 
 // SetPage sets field value
-func (o *BulkChargeListResponseMeta) SetPage(v int32) {
+func (o *PaymentRequestListResponseMeta) SetPage(v int32) {
 	o.Page = v
 }
 
 // GetPageCount returns the PageCount field value
-func (o *BulkChargeListResponseMeta) GetPageCount() int32 {
+func (o *PaymentRequestListResponseMeta) GetPageCount() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -161,7 +161,7 @@ func (o *BulkChargeListResponseMeta) GetPageCount() int32 {
 
 // GetPageCountOk returns a tuple with the PageCount field value
 // and a boolean to check if the value has been set.
-func (o *BulkChargeListResponseMeta) GetPageCountOk() (*int32, bool) {
+func (o *PaymentRequestListResponseMeta) GetPageCountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -169,11 +169,11 @@ func (o *BulkChargeListResponseMeta) GetPageCountOk() (*int32, bool) {
 }
 
 // SetPageCount sets field value
-func (o *BulkChargeListResponseMeta) SetPageCount(v int32) {
+func (o *PaymentRequestListResponseMeta) SetPageCount(v int32) {
 	o.PageCount = v
 }
 
-func (o BulkChargeListResponseMeta) MarshalJSON() ([]byte, error) {
+func (o PaymentRequestListResponseMeta) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -181,7 +181,7 @@ func (o BulkChargeListResponseMeta) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o BulkChargeListResponseMeta) ToMap() (map[string]interface{}, error) {
+func (o PaymentRequestListResponseMeta) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["total"] = o.Total
 	toSerialize["skipped"] = o.Skipped
@@ -191,7 +191,7 @@ func (o BulkChargeListResponseMeta) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *BulkChargeListResponseMeta) UnmarshalJSON(data []byte) (err error) {
+func (o *PaymentRequestListResponseMeta) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -217,53 +217,53 @@ func (o *BulkChargeListResponseMeta) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varBulkChargeListResponseMeta := _BulkChargeListResponseMeta{}
+	varPaymentRequestListResponseMeta := _PaymentRequestListResponseMeta{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBulkChargeListResponseMeta)
+	err = decoder.Decode(&varPaymentRequestListResponseMeta)
 
 	if err != nil {
 		return err
 	}
 
-	*o = BulkChargeListResponseMeta(varBulkChargeListResponseMeta)
+	*o = PaymentRequestListResponseMeta(varPaymentRequestListResponseMeta)
 
 	return err
 }
 
-type NullableBulkChargeListResponseMeta struct {
-	value *BulkChargeListResponseMeta
+type NullablePaymentRequestListResponseMeta struct {
+	value *PaymentRequestListResponseMeta
 	isSet bool
 }
 
-func (v NullableBulkChargeListResponseMeta) Get() *BulkChargeListResponseMeta {
+func (v NullablePaymentRequestListResponseMeta) Get() *PaymentRequestListResponseMeta {
 	return v.value
 }
 
-func (v *NullableBulkChargeListResponseMeta) Set(val *BulkChargeListResponseMeta) {
+func (v *NullablePaymentRequestListResponseMeta) Set(val *PaymentRequestListResponseMeta) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableBulkChargeListResponseMeta) IsSet() bool {
+func (v NullablePaymentRequestListResponseMeta) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableBulkChargeListResponseMeta) Unset() {
+func (v *NullablePaymentRequestListResponseMeta) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableBulkChargeListResponseMeta(val *BulkChargeListResponseMeta) *NullableBulkChargeListResponseMeta {
-	return &NullableBulkChargeListResponseMeta{value: val, isSet: true}
+func NewNullablePaymentRequestListResponseMeta(val *PaymentRequestListResponseMeta) *NullablePaymentRequestListResponseMeta {
+	return &NullablePaymentRequestListResponseMeta{value: val, isSet: true}
 }
 
-func (v NullableBulkChargeListResponseMeta) MarshalJSON() ([]byte, error) {
+func (v NullablePaymentRequestListResponseMeta) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableBulkChargeListResponseMeta) UnmarshalJSON(src []byte) error {
+func (v *NullablePaymentRequestListResponseMeta) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

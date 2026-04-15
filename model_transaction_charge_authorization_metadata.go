@@ -17,14 +17,14 @@ import (
 )
 
 
-// VerifyResponseDataMetadata struct for VerifyResponseDataMetadata
-type VerifyResponseDataMetadata struct {
+// TransactionChargeAuthorizationMetadata Stringified JSON object of custom data
+type TransactionChargeAuthorizationMetadata struct {
 	MapmapOfStringAny *map[string]interface{}
 	String *string
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
-func (dst *VerifyResponseDataMetadata) UnmarshalJSON(data []byte) error {
+func (dst *TransactionChargeAuthorizationMetadata) UnmarshalJSON(data []byte) error {
 	var err error
 	// try to unmarshal JSON data into MapmapOfStringAny
 	err = json.Unmarshal(data, &dst.MapmapOfStringAny);
@@ -52,11 +52,11 @@ func (dst *VerifyResponseDataMetadata) UnmarshalJSON(data []byte) error {
 		dst.String = nil
 	}
 
-	return fmt.Errorf("data failed to match schemas in anyOf(VerifyResponseDataMetadata)")
+	return fmt.Errorf("data failed to match schemas in anyOf(TransactionChargeAuthorizationMetadata)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src VerifyResponseDataMetadata) MarshalJSON() ([]byte, error) {
+func (src TransactionChargeAuthorizationMetadata) MarshalJSON() ([]byte, error) {
 	if src.MapmapOfStringAny != nil {
 		return json.Marshal(&src.MapmapOfStringAny)
 	}
@@ -69,38 +69,38 @@ func (src VerifyResponseDataMetadata) MarshalJSON() ([]byte, error) {
 }
 
 
-type NullableVerifyResponseDataMetadata struct {
-	value *VerifyResponseDataMetadata
+type NullableTransactionChargeAuthorizationMetadata struct {
+	value *TransactionChargeAuthorizationMetadata
 	isSet bool
 }
 
-func (v NullableVerifyResponseDataMetadata) Get() *VerifyResponseDataMetadata {
+func (v NullableTransactionChargeAuthorizationMetadata) Get() *TransactionChargeAuthorizationMetadata {
 	return v.value
 }
 
-func (v *NullableVerifyResponseDataMetadata) Set(val *VerifyResponseDataMetadata) {
+func (v *NullableTransactionChargeAuthorizationMetadata) Set(val *TransactionChargeAuthorizationMetadata) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableVerifyResponseDataMetadata) IsSet() bool {
+func (v NullableTransactionChargeAuthorizationMetadata) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableVerifyResponseDataMetadata) Unset() {
+func (v *NullableTransactionChargeAuthorizationMetadata) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableVerifyResponseDataMetadata(val *VerifyResponseDataMetadata) *NullableVerifyResponseDataMetadata {
-	return &NullableVerifyResponseDataMetadata{value: val, isSet: true}
+func NewNullableTransactionChargeAuthorizationMetadata(val *TransactionChargeAuthorizationMetadata) *NullableTransactionChargeAuthorizationMetadata {
+	return &NullableTransactionChargeAuthorizationMetadata{value: val, isSet: true}
 }
 
-func (v NullableVerifyResponseDataMetadata) MarshalJSON() ([]byte, error) {
+func (v NullableTransactionChargeAuthorizationMetadata) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableVerifyResponseDataMetadata) UnmarshalJSON(src []byte) error {
+func (v *NullableTransactionChargeAuthorizationMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

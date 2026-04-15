@@ -17,41 +17,41 @@ import (
 	"fmt"
 )
 
-// checks if the TerminalListsResponseMeta type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TerminalListsResponseMeta{}
+// checks if the CursorMeta type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CursorMeta{}
 
-// TerminalListsResponseMeta struct for TerminalListsResponseMeta
-type TerminalListsResponseMeta struct {
+// CursorMeta struct for CursorMeta
+type CursorMeta struct {
 	Next NullableString `json:"next"`
 	Previous NullableString `json:"previous"`
 	PerPage int32 `json:"perPage"`
 }
 
-type _TerminalListsResponseMeta TerminalListsResponseMeta
+type _CursorMeta CursorMeta
 
-// NewTerminalListsResponseMeta instantiates a new TerminalListsResponseMeta object
+// NewCursorMeta instantiates a new CursorMeta object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerminalListsResponseMeta(next NullableString, previous NullableString, perPage int32) *TerminalListsResponseMeta {
-	this := TerminalListsResponseMeta{}
+func NewCursorMeta(next NullableString, previous NullableString, perPage int32) *CursorMeta {
+	this := CursorMeta{}
 	this.Next = next
 	this.Previous = previous
 	this.PerPage = perPage
 	return &this
 }
 
-// NewTerminalListsResponseMetaWithDefaults instantiates a new TerminalListsResponseMeta object
+// NewCursorMetaWithDefaults instantiates a new CursorMeta object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewTerminalListsResponseMetaWithDefaults() *TerminalListsResponseMeta {
-	this := TerminalListsResponseMeta{}
+func NewCursorMetaWithDefaults() *CursorMeta {
+	this := CursorMeta{}
 	return &this
 }
 
 // GetNext returns the Next field value
 // If the value is explicit nil, the zero value for string will be returned
-func (o *TerminalListsResponseMeta) GetNext() string {
+func (o *CursorMeta) GetNext() string {
 	if o == nil || o.Next.Get() == nil {
 		var ret string
 		return ret
@@ -63,7 +63,7 @@ func (o *TerminalListsResponseMeta) GetNext() string {
 // GetNextOk returns a tuple with the Next field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TerminalListsResponseMeta) GetNextOk() (*string, bool) {
+func (o *CursorMeta) GetNextOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -71,13 +71,13 @@ func (o *TerminalListsResponseMeta) GetNextOk() (*string, bool) {
 }
 
 // SetNext sets field value
-func (o *TerminalListsResponseMeta) SetNext(v string) {
+func (o *CursorMeta) SetNext(v string) {
 	o.Next.Set(&v)
 }
 
 // GetPrevious returns the Previous field value
 // If the value is explicit nil, the zero value for string will be returned
-func (o *TerminalListsResponseMeta) GetPrevious() string {
+func (o *CursorMeta) GetPrevious() string {
 	if o == nil || o.Previous.Get() == nil {
 		var ret string
 		return ret
@@ -89,7 +89,7 @@ func (o *TerminalListsResponseMeta) GetPrevious() string {
 // GetPreviousOk returns a tuple with the Previous field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TerminalListsResponseMeta) GetPreviousOk() (*string, bool) {
+func (o *CursorMeta) GetPreviousOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -97,12 +97,12 @@ func (o *TerminalListsResponseMeta) GetPreviousOk() (*string, bool) {
 }
 
 // SetPrevious sets field value
-func (o *TerminalListsResponseMeta) SetPrevious(v string) {
+func (o *CursorMeta) SetPrevious(v string) {
 	o.Previous.Set(&v)
 }
 
 // GetPerPage returns the PerPage field value
-func (o *TerminalListsResponseMeta) GetPerPage() int32 {
+func (o *CursorMeta) GetPerPage() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -113,7 +113,7 @@ func (o *TerminalListsResponseMeta) GetPerPage() int32 {
 
 // GetPerPageOk returns a tuple with the PerPage field value
 // and a boolean to check if the value has been set.
-func (o *TerminalListsResponseMeta) GetPerPageOk() (*int32, bool) {
+func (o *CursorMeta) GetPerPageOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -121,11 +121,11 @@ func (o *TerminalListsResponseMeta) GetPerPageOk() (*int32, bool) {
 }
 
 // SetPerPage sets field value
-func (o *TerminalListsResponseMeta) SetPerPage(v int32) {
+func (o *CursorMeta) SetPerPage(v int32) {
 	o.PerPage = v
 }
 
-func (o TerminalListsResponseMeta) MarshalJSON() ([]byte, error) {
+func (o CursorMeta) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -133,7 +133,7 @@ func (o TerminalListsResponseMeta) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o TerminalListsResponseMeta) ToMap() (map[string]interface{}, error) {
+func (o CursorMeta) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["next"] = o.Next.Get()
 	toSerialize["previous"] = o.Previous.Get()
@@ -141,7 +141,7 @@ func (o TerminalListsResponseMeta) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TerminalListsResponseMeta) UnmarshalJSON(data []byte) (err error) {
+func (o *CursorMeta) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -165,53 +165,53 @@ func (o *TerminalListsResponseMeta) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varTerminalListsResponseMeta := _TerminalListsResponseMeta{}
+	varCursorMeta := _CursorMeta{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTerminalListsResponseMeta)
+	err = decoder.Decode(&varCursorMeta)
 
 	if err != nil {
 		return err
 	}
 
-	*o = TerminalListsResponseMeta(varTerminalListsResponseMeta)
+	*o = CursorMeta(varCursorMeta)
 
 	return err
 }
 
-type NullableTerminalListsResponseMeta struct {
-	value *TerminalListsResponseMeta
+type NullableCursorMeta struct {
+	value *CursorMeta
 	isSet bool
 }
 
-func (v NullableTerminalListsResponseMeta) Get() *TerminalListsResponseMeta {
+func (v NullableCursorMeta) Get() *CursorMeta {
 	return v.value
 }
 
-func (v *NullableTerminalListsResponseMeta) Set(val *TerminalListsResponseMeta) {
+func (v *NullableCursorMeta) Set(val *CursorMeta) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableTerminalListsResponseMeta) IsSet() bool {
+func (v NullableCursorMeta) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableTerminalListsResponseMeta) Unset() {
+func (v *NullableCursorMeta) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableTerminalListsResponseMeta(val *TerminalListsResponseMeta) *NullableTerminalListsResponseMeta {
-	return &NullableTerminalListsResponseMeta{value: val, isSet: true}
+func NewNullableCursorMeta(val *CursorMeta) *NullableCursorMeta {
+	return &NullableCursorMeta{value: val, isSet: true}
 }
 
-func (v NullableTerminalListsResponseMeta) MarshalJSON() ([]byte, error) {
+func (v NullableCursorMeta) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableTerminalListsResponseMeta) UnmarshalJSON(src []byte) error {
+func (v *NullableCursorMeta) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

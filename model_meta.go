@@ -17,28 +17,26 @@ import (
 	"fmt"
 )
 
-// checks if the StorefrontFetchResponseMeta type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &StorefrontFetchResponseMeta{}
+// checks if the Meta type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Meta{}
 
-// StorefrontFetchResponseMeta struct for StorefrontFetchResponseMeta
-type StorefrontFetchResponseMeta struct {
-	ProductCount int32 `json:"product_count"`
+// Meta struct for Meta
+type Meta struct {
 	Total int32 `json:"total"`
 	Skipped int32 `json:"skipped"`
-	PerPage int32 `json:"perPage"`
+	PerPage MetaPerPage `json:"perPage"`
 	Page int32 `json:"page"`
 	PageCount int32 `json:"pageCount"`
 }
 
-type _StorefrontFetchResponseMeta StorefrontFetchResponseMeta
+type _Meta Meta
 
-// NewStorefrontFetchResponseMeta instantiates a new StorefrontFetchResponseMeta object
+// NewMeta instantiates a new Meta object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStorefrontFetchResponseMeta(productCount int32, total int32, skipped int32, perPage int32, page int32, pageCount int32) *StorefrontFetchResponseMeta {
-	this := StorefrontFetchResponseMeta{}
-	this.ProductCount = productCount
+func NewMeta(total int32, skipped int32, perPage MetaPerPage, page int32, pageCount int32) *Meta {
+	this := Meta{}
 	this.Total = total
 	this.Skipped = skipped
 	this.PerPage = perPage
@@ -47,40 +45,16 @@ func NewStorefrontFetchResponseMeta(productCount int32, total int32, skipped int
 	return &this
 }
 
-// NewStorefrontFetchResponseMetaWithDefaults instantiates a new StorefrontFetchResponseMeta object
+// NewMetaWithDefaults instantiates a new Meta object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewStorefrontFetchResponseMetaWithDefaults() *StorefrontFetchResponseMeta {
-	this := StorefrontFetchResponseMeta{}
+func NewMetaWithDefaults() *Meta {
+	this := Meta{}
 	return &this
 }
 
-// GetProductCount returns the ProductCount field value
-func (o *StorefrontFetchResponseMeta) GetProductCount() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.ProductCount
-}
-
-// GetProductCountOk returns a tuple with the ProductCount field value
-// and a boolean to check if the value has been set.
-func (o *StorefrontFetchResponseMeta) GetProductCountOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ProductCount, true
-}
-
-// SetProductCount sets field value
-func (o *StorefrontFetchResponseMeta) SetProductCount(v int32) {
-	o.ProductCount = v
-}
-
 // GetTotal returns the Total field value
-func (o *StorefrontFetchResponseMeta) GetTotal() int32 {
+func (o *Meta) GetTotal() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -91,7 +65,7 @@ func (o *StorefrontFetchResponseMeta) GetTotal() int32 {
 
 // GetTotalOk returns a tuple with the Total field value
 // and a boolean to check if the value has been set.
-func (o *StorefrontFetchResponseMeta) GetTotalOk() (*int32, bool) {
+func (o *Meta) GetTotalOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -99,12 +73,12 @@ func (o *StorefrontFetchResponseMeta) GetTotalOk() (*int32, bool) {
 }
 
 // SetTotal sets field value
-func (o *StorefrontFetchResponseMeta) SetTotal(v int32) {
+func (o *Meta) SetTotal(v int32) {
 	o.Total = v
 }
 
 // GetSkipped returns the Skipped field value
-func (o *StorefrontFetchResponseMeta) GetSkipped() int32 {
+func (o *Meta) GetSkipped() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -115,7 +89,7 @@ func (o *StorefrontFetchResponseMeta) GetSkipped() int32 {
 
 // GetSkippedOk returns a tuple with the Skipped field value
 // and a boolean to check if the value has been set.
-func (o *StorefrontFetchResponseMeta) GetSkippedOk() (*int32, bool) {
+func (o *Meta) GetSkippedOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -123,14 +97,14 @@ func (o *StorefrontFetchResponseMeta) GetSkippedOk() (*int32, bool) {
 }
 
 // SetSkipped sets field value
-func (o *StorefrontFetchResponseMeta) SetSkipped(v int32) {
+func (o *Meta) SetSkipped(v int32) {
 	o.Skipped = v
 }
 
 // GetPerPage returns the PerPage field value
-func (o *StorefrontFetchResponseMeta) GetPerPage() int32 {
+func (o *Meta) GetPerPage() MetaPerPage {
 	if o == nil {
-		var ret int32
+		var ret MetaPerPage
 		return ret
 	}
 
@@ -139,7 +113,7 @@ func (o *StorefrontFetchResponseMeta) GetPerPage() int32 {
 
 // GetPerPageOk returns a tuple with the PerPage field value
 // and a boolean to check if the value has been set.
-func (o *StorefrontFetchResponseMeta) GetPerPageOk() (*int32, bool) {
+func (o *Meta) GetPerPageOk() (*MetaPerPage, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,12 +121,12 @@ func (o *StorefrontFetchResponseMeta) GetPerPageOk() (*int32, bool) {
 }
 
 // SetPerPage sets field value
-func (o *StorefrontFetchResponseMeta) SetPerPage(v int32) {
+func (o *Meta) SetPerPage(v MetaPerPage) {
 	o.PerPage = v
 }
 
 // GetPage returns the Page field value
-func (o *StorefrontFetchResponseMeta) GetPage() int32 {
+func (o *Meta) GetPage() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -163,7 +137,7 @@ func (o *StorefrontFetchResponseMeta) GetPage() int32 {
 
 // GetPageOk returns a tuple with the Page field value
 // and a boolean to check if the value has been set.
-func (o *StorefrontFetchResponseMeta) GetPageOk() (*int32, bool) {
+func (o *Meta) GetPageOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -171,12 +145,12 @@ func (o *StorefrontFetchResponseMeta) GetPageOk() (*int32, bool) {
 }
 
 // SetPage sets field value
-func (o *StorefrontFetchResponseMeta) SetPage(v int32) {
+func (o *Meta) SetPage(v int32) {
 	o.Page = v
 }
 
 // GetPageCount returns the PageCount field value
-func (o *StorefrontFetchResponseMeta) GetPageCount() int32 {
+func (o *Meta) GetPageCount() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -187,7 +161,7 @@ func (o *StorefrontFetchResponseMeta) GetPageCount() int32 {
 
 // GetPageCountOk returns a tuple with the PageCount field value
 // and a boolean to check if the value has been set.
-func (o *StorefrontFetchResponseMeta) GetPageCountOk() (*int32, bool) {
+func (o *Meta) GetPageCountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -195,11 +169,11 @@ func (o *StorefrontFetchResponseMeta) GetPageCountOk() (*int32, bool) {
 }
 
 // SetPageCount sets field value
-func (o *StorefrontFetchResponseMeta) SetPageCount(v int32) {
+func (o *Meta) SetPageCount(v int32) {
 	o.PageCount = v
 }
 
-func (o StorefrontFetchResponseMeta) MarshalJSON() ([]byte, error) {
+func (o Meta) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -207,9 +181,8 @@ func (o StorefrontFetchResponseMeta) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o StorefrontFetchResponseMeta) ToMap() (map[string]interface{}, error) {
+func (o Meta) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["product_count"] = o.ProductCount
 	toSerialize["total"] = o.Total
 	toSerialize["skipped"] = o.Skipped
 	toSerialize["perPage"] = o.PerPage
@@ -218,12 +191,11 @@ func (o StorefrontFetchResponseMeta) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *StorefrontFetchResponseMeta) UnmarshalJSON(data []byte) (err error) {
+func (o *Meta) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"product_count",
 		"total",
 		"skipped",
 		"perPage",
@@ -245,53 +217,53 @@ func (o *StorefrontFetchResponseMeta) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varStorefrontFetchResponseMeta := _StorefrontFetchResponseMeta{}
+	varMeta := _Meta{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStorefrontFetchResponseMeta)
+	err = decoder.Decode(&varMeta)
 
 	if err != nil {
 		return err
 	}
 
-	*o = StorefrontFetchResponseMeta(varStorefrontFetchResponseMeta)
+	*o = Meta(varMeta)
 
 	return err
 }
 
-type NullableStorefrontFetchResponseMeta struct {
-	value *StorefrontFetchResponseMeta
+type NullableMeta struct {
+	value *Meta
 	isSet bool
 }
 
-func (v NullableStorefrontFetchResponseMeta) Get() *StorefrontFetchResponseMeta {
+func (v NullableMeta) Get() *Meta {
 	return v.value
 }
 
-func (v *NullableStorefrontFetchResponseMeta) Set(val *StorefrontFetchResponseMeta) {
+func (v *NullableMeta) Set(val *Meta) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableStorefrontFetchResponseMeta) IsSet() bool {
+func (v NullableMeta) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableStorefrontFetchResponseMeta) Unset() {
+func (v *NullableMeta) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableStorefrontFetchResponseMeta(val *StorefrontFetchResponseMeta) *NullableStorefrontFetchResponseMeta {
-	return &NullableStorefrontFetchResponseMeta{value: val, isSet: true}
+func NewNullableMeta(val *Meta) *NullableMeta {
+	return &NullableMeta{value: val, isSet: true}
 }
 
-func (v NullableStorefrontFetchResponseMeta) MarshalJSON() ([]byte, error) {
+func (v NullableMeta) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableStorefrontFetchResponseMeta) UnmarshalJSON(src []byte) error {
+func (v *NullableMeta) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

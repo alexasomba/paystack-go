@@ -17,14 +17,14 @@ import (
 )
 
 
-// BulkChargeListResponseMetaPerPage struct for BulkChargeListResponseMetaPerPage
-type BulkChargeListResponseMetaPerPage struct {
+// MetaPerPage struct for MetaPerPage
+type MetaPerPage struct {
 	Int32 *int32
 	String *string
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
-func (dst *BulkChargeListResponseMetaPerPage) UnmarshalJSON(data []byte) error {
+func (dst *MetaPerPage) UnmarshalJSON(data []byte) error {
 	var err error
 	// try to unmarshal JSON data into Int32
 	err = json.Unmarshal(data, &dst.Int32);
@@ -52,11 +52,11 @@ func (dst *BulkChargeListResponseMetaPerPage) UnmarshalJSON(data []byte) error {
 		dst.String = nil
 	}
 
-	return fmt.Errorf("data failed to match schemas in anyOf(BulkChargeListResponseMetaPerPage)")
+	return fmt.Errorf("data failed to match schemas in anyOf(MetaPerPage)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src BulkChargeListResponseMetaPerPage) MarshalJSON() ([]byte, error) {
+func (src MetaPerPage) MarshalJSON() ([]byte, error) {
 	if src.Int32 != nil {
 		return json.Marshal(&src.Int32)
 	}
@@ -69,38 +69,38 @@ func (src BulkChargeListResponseMetaPerPage) MarshalJSON() ([]byte, error) {
 }
 
 
-type NullableBulkChargeListResponseMetaPerPage struct {
-	value *BulkChargeListResponseMetaPerPage
+type NullableMetaPerPage struct {
+	value *MetaPerPage
 	isSet bool
 }
 
-func (v NullableBulkChargeListResponseMetaPerPage) Get() *BulkChargeListResponseMetaPerPage {
+func (v NullableMetaPerPage) Get() *MetaPerPage {
 	return v.value
 }
 
-func (v *NullableBulkChargeListResponseMetaPerPage) Set(val *BulkChargeListResponseMetaPerPage) {
+func (v *NullableMetaPerPage) Set(val *MetaPerPage) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableBulkChargeListResponseMetaPerPage) IsSet() bool {
+func (v NullableMetaPerPage) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableBulkChargeListResponseMetaPerPage) Unset() {
+func (v *NullableMetaPerPage) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableBulkChargeListResponseMetaPerPage(val *BulkChargeListResponseMetaPerPage) *NullableBulkChargeListResponseMetaPerPage {
-	return &NullableBulkChargeListResponseMetaPerPage{value: val, isSet: true}
+func NewNullableMetaPerPage(val *MetaPerPage) *NullableMetaPerPage {
+	return &NullableMetaPerPage{value: val, isSet: true}
 }
 
-func (v NullableBulkChargeListResponseMetaPerPage) MarshalJSON() ([]byte, error) {
+func (v NullableMetaPerPage) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableBulkChargeListResponseMetaPerPage) UnmarshalJSON(src []byte) error {
+func (v *NullableMetaPerPage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

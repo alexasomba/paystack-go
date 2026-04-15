@@ -17,11 +17,11 @@ import (
 	"fmt"
 )
 
-// checks if the TransactionFetchResponseDataCustomer type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TransactionFetchResponseDataCustomer{}
+// checks if the OrderValidateResponseDataCustomer type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrderValidateResponseDataCustomer{}
 
-// TransactionFetchResponseDataCustomer struct for TransactionFetchResponseDataCustomer
-type TransactionFetchResponseDataCustomer struct {
+// OrderValidateResponseDataCustomer struct for OrderValidateResponseDataCustomer
+type OrderValidateResponseDataCustomer struct {
 	Id int32 `json:"id"`
 	FirstName string `json:"first_name"`
 	LastName string `json:"last_name"`
@@ -33,14 +33,14 @@ type TransactionFetchResponseDataCustomer struct {
 	InternationalFormatPhone string `json:"international_format_phone"`
 }
 
-type _TransactionFetchResponseDataCustomer TransactionFetchResponseDataCustomer
+type _OrderValidateResponseDataCustomer OrderValidateResponseDataCustomer
 
-// NewTransactionFetchResponseDataCustomer instantiates a new TransactionFetchResponseDataCustomer object
+// NewOrderValidateResponseDataCustomer instantiates a new OrderValidateResponseDataCustomer object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionFetchResponseDataCustomer(id int32, firstName string, lastName string, email string, customerCode string, phone string, metadata map[string]interface{}, riskAction string, internationalFormatPhone string) *TransactionFetchResponseDataCustomer {
-	this := TransactionFetchResponseDataCustomer{}
+func NewOrderValidateResponseDataCustomer(id int32, firstName string, lastName string, email string, customerCode string, phone string, metadata map[string]interface{}, riskAction string, internationalFormatPhone string) *OrderValidateResponseDataCustomer {
+	this := OrderValidateResponseDataCustomer{}
 	this.Id = id
 	this.FirstName = firstName
 	this.LastName = lastName
@@ -53,16 +53,16 @@ func NewTransactionFetchResponseDataCustomer(id int32, firstName string, lastNam
 	return &this
 }
 
-// NewTransactionFetchResponseDataCustomerWithDefaults instantiates a new TransactionFetchResponseDataCustomer object
+// NewOrderValidateResponseDataCustomerWithDefaults instantiates a new OrderValidateResponseDataCustomer object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewTransactionFetchResponseDataCustomerWithDefaults() *TransactionFetchResponseDataCustomer {
-	this := TransactionFetchResponseDataCustomer{}
+func NewOrderValidateResponseDataCustomerWithDefaults() *OrderValidateResponseDataCustomer {
+	this := OrderValidateResponseDataCustomer{}
 	return &this
 }
 
 // GetId returns the Id field value
-func (o *TransactionFetchResponseDataCustomer) GetId() int32 {
+func (o *OrderValidateResponseDataCustomer) GetId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -73,7 +73,7 @@ func (o *TransactionFetchResponseDataCustomer) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *TransactionFetchResponseDataCustomer) GetIdOk() (*int32, bool) {
+func (o *OrderValidateResponseDataCustomer) GetIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -81,12 +81,12 @@ func (o *TransactionFetchResponseDataCustomer) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *TransactionFetchResponseDataCustomer) SetId(v int32) {
+func (o *OrderValidateResponseDataCustomer) SetId(v int32) {
 	o.Id = v
 }
 
 // GetFirstName returns the FirstName field value
-func (o *TransactionFetchResponseDataCustomer) GetFirstName() string {
+func (o *OrderValidateResponseDataCustomer) GetFirstName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -97,7 +97,7 @@ func (o *TransactionFetchResponseDataCustomer) GetFirstName() string {
 
 // GetFirstNameOk returns a tuple with the FirstName field value
 // and a boolean to check if the value has been set.
-func (o *TransactionFetchResponseDataCustomer) GetFirstNameOk() (*string, bool) {
+func (o *OrderValidateResponseDataCustomer) GetFirstNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -105,12 +105,12 @@ func (o *TransactionFetchResponseDataCustomer) GetFirstNameOk() (*string, bool) 
 }
 
 // SetFirstName sets field value
-func (o *TransactionFetchResponseDataCustomer) SetFirstName(v string) {
+func (o *OrderValidateResponseDataCustomer) SetFirstName(v string) {
 	o.FirstName = v
 }
 
 // GetLastName returns the LastName field value
-func (o *TransactionFetchResponseDataCustomer) GetLastName() string {
+func (o *OrderValidateResponseDataCustomer) GetLastName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -121,7 +121,7 @@ func (o *TransactionFetchResponseDataCustomer) GetLastName() string {
 
 // GetLastNameOk returns a tuple with the LastName field value
 // and a boolean to check if the value has been set.
-func (o *TransactionFetchResponseDataCustomer) GetLastNameOk() (*string, bool) {
+func (o *OrderValidateResponseDataCustomer) GetLastNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -129,12 +129,12 @@ func (o *TransactionFetchResponseDataCustomer) GetLastNameOk() (*string, bool) {
 }
 
 // SetLastName sets field value
-func (o *TransactionFetchResponseDataCustomer) SetLastName(v string) {
+func (o *OrderValidateResponseDataCustomer) SetLastName(v string) {
 	o.LastName = v
 }
 
 // GetEmail returns the Email field value
-func (o *TransactionFetchResponseDataCustomer) GetEmail() string {
+func (o *OrderValidateResponseDataCustomer) GetEmail() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -145,7 +145,7 @@ func (o *TransactionFetchResponseDataCustomer) GetEmail() string {
 
 // GetEmailOk returns a tuple with the Email field value
 // and a boolean to check if the value has been set.
-func (o *TransactionFetchResponseDataCustomer) GetEmailOk() (*string, bool) {
+func (o *OrderValidateResponseDataCustomer) GetEmailOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -153,12 +153,12 @@ func (o *TransactionFetchResponseDataCustomer) GetEmailOk() (*string, bool) {
 }
 
 // SetEmail sets field value
-func (o *TransactionFetchResponseDataCustomer) SetEmail(v string) {
+func (o *OrderValidateResponseDataCustomer) SetEmail(v string) {
 	o.Email = v
 }
 
 // GetCustomerCode returns the CustomerCode field value
-func (o *TransactionFetchResponseDataCustomer) GetCustomerCode() string {
+func (o *OrderValidateResponseDataCustomer) GetCustomerCode() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -169,7 +169,7 @@ func (o *TransactionFetchResponseDataCustomer) GetCustomerCode() string {
 
 // GetCustomerCodeOk returns a tuple with the CustomerCode field value
 // and a boolean to check if the value has been set.
-func (o *TransactionFetchResponseDataCustomer) GetCustomerCodeOk() (*string, bool) {
+func (o *OrderValidateResponseDataCustomer) GetCustomerCodeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -177,12 +177,12 @@ func (o *TransactionFetchResponseDataCustomer) GetCustomerCodeOk() (*string, boo
 }
 
 // SetCustomerCode sets field value
-func (o *TransactionFetchResponseDataCustomer) SetCustomerCode(v string) {
+func (o *OrderValidateResponseDataCustomer) SetCustomerCode(v string) {
 	o.CustomerCode = v
 }
 
 // GetPhone returns the Phone field value
-func (o *TransactionFetchResponseDataCustomer) GetPhone() string {
+func (o *OrderValidateResponseDataCustomer) GetPhone() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -193,7 +193,7 @@ func (o *TransactionFetchResponseDataCustomer) GetPhone() string {
 
 // GetPhoneOk returns a tuple with the Phone field value
 // and a boolean to check if the value has been set.
-func (o *TransactionFetchResponseDataCustomer) GetPhoneOk() (*string, bool) {
+func (o *OrderValidateResponseDataCustomer) GetPhoneOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -201,12 +201,12 @@ func (o *TransactionFetchResponseDataCustomer) GetPhoneOk() (*string, bool) {
 }
 
 // SetPhone sets field value
-func (o *TransactionFetchResponseDataCustomer) SetPhone(v string) {
+func (o *OrderValidateResponseDataCustomer) SetPhone(v string) {
 	o.Phone = v
 }
 
 // GetMetadata returns the Metadata field value
-func (o *TransactionFetchResponseDataCustomer) GetMetadata() map[string]interface{} {
+func (o *OrderValidateResponseDataCustomer) GetMetadata() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
 		return ret
@@ -217,7 +217,7 @@ func (o *TransactionFetchResponseDataCustomer) GetMetadata() map[string]interfac
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
-func (o *TransactionFetchResponseDataCustomer) GetMetadataOk() (map[string]interface{}, bool) {
+func (o *OrderValidateResponseDataCustomer) GetMetadataOk() (map[string]interface{}, bool) {
 	if o == nil {
 		return map[string]interface{}{}, false
 	}
@@ -225,12 +225,12 @@ func (o *TransactionFetchResponseDataCustomer) GetMetadataOk() (map[string]inter
 }
 
 // SetMetadata sets field value
-func (o *TransactionFetchResponseDataCustomer) SetMetadata(v map[string]interface{}) {
+func (o *OrderValidateResponseDataCustomer) SetMetadata(v map[string]interface{}) {
 	o.Metadata = v
 }
 
 // GetRiskAction returns the RiskAction field value
-func (o *TransactionFetchResponseDataCustomer) GetRiskAction() string {
+func (o *OrderValidateResponseDataCustomer) GetRiskAction() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -241,7 +241,7 @@ func (o *TransactionFetchResponseDataCustomer) GetRiskAction() string {
 
 // GetRiskActionOk returns a tuple with the RiskAction field value
 // and a boolean to check if the value has been set.
-func (o *TransactionFetchResponseDataCustomer) GetRiskActionOk() (*string, bool) {
+func (o *OrderValidateResponseDataCustomer) GetRiskActionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -249,12 +249,12 @@ func (o *TransactionFetchResponseDataCustomer) GetRiskActionOk() (*string, bool)
 }
 
 // SetRiskAction sets field value
-func (o *TransactionFetchResponseDataCustomer) SetRiskAction(v string) {
+func (o *OrderValidateResponseDataCustomer) SetRiskAction(v string) {
 	o.RiskAction = v
 }
 
 // GetInternationalFormatPhone returns the InternationalFormatPhone field value
-func (o *TransactionFetchResponseDataCustomer) GetInternationalFormatPhone() string {
+func (o *OrderValidateResponseDataCustomer) GetInternationalFormatPhone() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -265,7 +265,7 @@ func (o *TransactionFetchResponseDataCustomer) GetInternationalFormatPhone() str
 
 // GetInternationalFormatPhoneOk returns a tuple with the InternationalFormatPhone field value
 // and a boolean to check if the value has been set.
-func (o *TransactionFetchResponseDataCustomer) GetInternationalFormatPhoneOk() (*string, bool) {
+func (o *OrderValidateResponseDataCustomer) GetInternationalFormatPhoneOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -273,11 +273,11 @@ func (o *TransactionFetchResponseDataCustomer) GetInternationalFormatPhoneOk() (
 }
 
 // SetInternationalFormatPhone sets field value
-func (o *TransactionFetchResponseDataCustomer) SetInternationalFormatPhone(v string) {
+func (o *OrderValidateResponseDataCustomer) SetInternationalFormatPhone(v string) {
 	o.InternationalFormatPhone = v
 }
 
-func (o TransactionFetchResponseDataCustomer) MarshalJSON() ([]byte, error) {
+func (o OrderValidateResponseDataCustomer) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -285,7 +285,7 @@ func (o TransactionFetchResponseDataCustomer) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o TransactionFetchResponseDataCustomer) ToMap() (map[string]interface{}, error) {
+func (o OrderValidateResponseDataCustomer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["first_name"] = o.FirstName
@@ -299,7 +299,7 @@ func (o TransactionFetchResponseDataCustomer) ToMap() (map[string]interface{}, e
 	return toSerialize, nil
 }
 
-func (o *TransactionFetchResponseDataCustomer) UnmarshalJSON(data []byte) (err error) {
+func (o *OrderValidateResponseDataCustomer) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -329,53 +329,53 @@ func (o *TransactionFetchResponseDataCustomer) UnmarshalJSON(data []byte) (err e
 		}
 	}
 
-	varTransactionFetchResponseDataCustomer := _TransactionFetchResponseDataCustomer{}
+	varOrderValidateResponseDataCustomer := _OrderValidateResponseDataCustomer{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransactionFetchResponseDataCustomer)
+	err = decoder.Decode(&varOrderValidateResponseDataCustomer)
 
 	if err != nil {
 		return err
 	}
 
-	*o = TransactionFetchResponseDataCustomer(varTransactionFetchResponseDataCustomer)
+	*o = OrderValidateResponseDataCustomer(varOrderValidateResponseDataCustomer)
 
 	return err
 }
 
-type NullableTransactionFetchResponseDataCustomer struct {
-	value *TransactionFetchResponseDataCustomer
+type NullableOrderValidateResponseDataCustomer struct {
+	value *OrderValidateResponseDataCustomer
 	isSet bool
 }
 
-func (v NullableTransactionFetchResponseDataCustomer) Get() *TransactionFetchResponseDataCustomer {
+func (v NullableOrderValidateResponseDataCustomer) Get() *OrderValidateResponseDataCustomer {
 	return v.value
 }
 
-func (v *NullableTransactionFetchResponseDataCustomer) Set(val *TransactionFetchResponseDataCustomer) {
+func (v *NullableOrderValidateResponseDataCustomer) Set(val *OrderValidateResponseDataCustomer) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableTransactionFetchResponseDataCustomer) IsSet() bool {
+func (v NullableOrderValidateResponseDataCustomer) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableTransactionFetchResponseDataCustomer) Unset() {
+func (v *NullableOrderValidateResponseDataCustomer) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableTransactionFetchResponseDataCustomer(val *TransactionFetchResponseDataCustomer) *NullableTransactionFetchResponseDataCustomer {
-	return &NullableTransactionFetchResponseDataCustomer{value: val, isSet: true}
+func NewNullableOrderValidateResponseDataCustomer(val *OrderValidateResponseDataCustomer) *NullableOrderValidateResponseDataCustomer {
+	return &NullableOrderValidateResponseDataCustomer{value: val, isSet: true}
 }
 
-func (v NullableTransactionFetchResponseDataCustomer) MarshalJSON() ([]byte, error) {
+func (v NullableOrderValidateResponseDataCustomer) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableTransactionFetchResponseDataCustomer) UnmarshalJSON(src []byte) error {
+func (v *NullableOrderValidateResponseDataCustomer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

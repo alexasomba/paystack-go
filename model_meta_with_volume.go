@@ -17,46 +17,46 @@ import (
 	"fmt"
 )
 
-// checks if the RefundListResponseMeta type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &RefundListResponseMeta{}
+// checks if the MetaWithVolume type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MetaWithVolume{}
 
-// RefundListResponseMeta struct for RefundListResponseMeta
-type RefundListResponseMeta struct {
+// MetaWithVolume struct for MetaWithVolume
+type MetaWithVolume struct {
 	Total int32 `json:"total"`
 	Skipped int32 `json:"skipped"`
-	PerPage string `json:"perPage"`
+	PerPage MetaPerPage `json:"perPage"`
 	Page int32 `json:"page"`
 	PageCount int32 `json:"pageCount"`
-	FailedRefundCount int32 `json:"failedRefundCount"`
+	TotalVolume int32 `json:"total_volume"`
 }
 
-type _RefundListResponseMeta RefundListResponseMeta
+type _MetaWithVolume MetaWithVolume
 
-// NewRefundListResponseMeta instantiates a new RefundListResponseMeta object
+// NewMetaWithVolume instantiates a new MetaWithVolume object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRefundListResponseMeta(total int32, skipped int32, perPage string, page int32, pageCount int32, failedRefundCount int32) *RefundListResponseMeta {
-	this := RefundListResponseMeta{}
+func NewMetaWithVolume(total int32, skipped int32, perPage MetaPerPage, page int32, pageCount int32, totalVolume int32) *MetaWithVolume {
+	this := MetaWithVolume{}
 	this.Total = total
 	this.Skipped = skipped
 	this.PerPage = perPage
 	this.Page = page
 	this.PageCount = pageCount
-	this.FailedRefundCount = failedRefundCount
+	this.TotalVolume = totalVolume
 	return &this
 }
 
-// NewRefundListResponseMetaWithDefaults instantiates a new RefundListResponseMeta object
+// NewMetaWithVolumeWithDefaults instantiates a new MetaWithVolume object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewRefundListResponseMetaWithDefaults() *RefundListResponseMeta {
-	this := RefundListResponseMeta{}
+func NewMetaWithVolumeWithDefaults() *MetaWithVolume {
+	this := MetaWithVolume{}
 	return &this
 }
 
 // GetTotal returns the Total field value
-func (o *RefundListResponseMeta) GetTotal() int32 {
+func (o *MetaWithVolume) GetTotal() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -67,7 +67,7 @@ func (o *RefundListResponseMeta) GetTotal() int32 {
 
 // GetTotalOk returns a tuple with the Total field value
 // and a boolean to check if the value has been set.
-func (o *RefundListResponseMeta) GetTotalOk() (*int32, bool) {
+func (o *MetaWithVolume) GetTotalOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -75,12 +75,12 @@ func (o *RefundListResponseMeta) GetTotalOk() (*int32, bool) {
 }
 
 // SetTotal sets field value
-func (o *RefundListResponseMeta) SetTotal(v int32) {
+func (o *MetaWithVolume) SetTotal(v int32) {
 	o.Total = v
 }
 
 // GetSkipped returns the Skipped field value
-func (o *RefundListResponseMeta) GetSkipped() int32 {
+func (o *MetaWithVolume) GetSkipped() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -91,7 +91,7 @@ func (o *RefundListResponseMeta) GetSkipped() int32 {
 
 // GetSkippedOk returns a tuple with the Skipped field value
 // and a boolean to check if the value has been set.
-func (o *RefundListResponseMeta) GetSkippedOk() (*int32, bool) {
+func (o *MetaWithVolume) GetSkippedOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -99,14 +99,14 @@ func (o *RefundListResponseMeta) GetSkippedOk() (*int32, bool) {
 }
 
 // SetSkipped sets field value
-func (o *RefundListResponseMeta) SetSkipped(v int32) {
+func (o *MetaWithVolume) SetSkipped(v int32) {
 	o.Skipped = v
 }
 
 // GetPerPage returns the PerPage field value
-func (o *RefundListResponseMeta) GetPerPage() string {
+func (o *MetaWithVolume) GetPerPage() MetaPerPage {
 	if o == nil {
-		var ret string
+		var ret MetaPerPage
 		return ret
 	}
 
@@ -115,7 +115,7 @@ func (o *RefundListResponseMeta) GetPerPage() string {
 
 // GetPerPageOk returns a tuple with the PerPage field value
 // and a boolean to check if the value has been set.
-func (o *RefundListResponseMeta) GetPerPageOk() (*string, bool) {
+func (o *MetaWithVolume) GetPerPageOk() (*MetaPerPage, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -123,12 +123,12 @@ func (o *RefundListResponseMeta) GetPerPageOk() (*string, bool) {
 }
 
 // SetPerPage sets field value
-func (o *RefundListResponseMeta) SetPerPage(v string) {
+func (o *MetaWithVolume) SetPerPage(v MetaPerPage) {
 	o.PerPage = v
 }
 
 // GetPage returns the Page field value
-func (o *RefundListResponseMeta) GetPage() int32 {
+func (o *MetaWithVolume) GetPage() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -139,7 +139,7 @@ func (o *RefundListResponseMeta) GetPage() int32 {
 
 // GetPageOk returns a tuple with the Page field value
 // and a boolean to check if the value has been set.
-func (o *RefundListResponseMeta) GetPageOk() (*int32, bool) {
+func (o *MetaWithVolume) GetPageOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,12 +147,12 @@ func (o *RefundListResponseMeta) GetPageOk() (*int32, bool) {
 }
 
 // SetPage sets field value
-func (o *RefundListResponseMeta) SetPage(v int32) {
+func (o *MetaWithVolume) SetPage(v int32) {
 	o.Page = v
 }
 
 // GetPageCount returns the PageCount field value
-func (o *RefundListResponseMeta) GetPageCount() int32 {
+func (o *MetaWithVolume) GetPageCount() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -163,7 +163,7 @@ func (o *RefundListResponseMeta) GetPageCount() int32 {
 
 // GetPageCountOk returns a tuple with the PageCount field value
 // and a boolean to check if the value has been set.
-func (o *RefundListResponseMeta) GetPageCountOk() (*int32, bool) {
+func (o *MetaWithVolume) GetPageCountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -171,35 +171,35 @@ func (o *RefundListResponseMeta) GetPageCountOk() (*int32, bool) {
 }
 
 // SetPageCount sets field value
-func (o *RefundListResponseMeta) SetPageCount(v int32) {
+func (o *MetaWithVolume) SetPageCount(v int32) {
 	o.PageCount = v
 }
 
-// GetFailedRefundCount returns the FailedRefundCount field value
-func (o *RefundListResponseMeta) GetFailedRefundCount() int32 {
+// GetTotalVolume returns the TotalVolume field value
+func (o *MetaWithVolume) GetTotalVolume() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.FailedRefundCount
+	return o.TotalVolume
 }
 
-// GetFailedRefundCountOk returns a tuple with the FailedRefundCount field value
+// GetTotalVolumeOk returns a tuple with the TotalVolume field value
 // and a boolean to check if the value has been set.
-func (o *RefundListResponseMeta) GetFailedRefundCountOk() (*int32, bool) {
+func (o *MetaWithVolume) GetTotalVolumeOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.FailedRefundCount, true
+	return &o.TotalVolume, true
 }
 
-// SetFailedRefundCount sets field value
-func (o *RefundListResponseMeta) SetFailedRefundCount(v int32) {
-	o.FailedRefundCount = v
+// SetTotalVolume sets field value
+func (o *MetaWithVolume) SetTotalVolume(v int32) {
+	o.TotalVolume = v
 }
 
-func (o RefundListResponseMeta) MarshalJSON() ([]byte, error) {
+func (o MetaWithVolume) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -207,18 +207,18 @@ func (o RefundListResponseMeta) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o RefundListResponseMeta) ToMap() (map[string]interface{}, error) {
+func (o MetaWithVolume) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["total"] = o.Total
 	toSerialize["skipped"] = o.Skipped
 	toSerialize["perPage"] = o.PerPage
 	toSerialize["page"] = o.Page
 	toSerialize["pageCount"] = o.PageCount
-	toSerialize["failedRefundCount"] = o.FailedRefundCount
+	toSerialize["total_volume"] = o.TotalVolume
 	return toSerialize, nil
 }
 
-func (o *RefundListResponseMeta) UnmarshalJSON(data []byte) (err error) {
+func (o *MetaWithVolume) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -228,7 +228,7 @@ func (o *RefundListResponseMeta) UnmarshalJSON(data []byte) (err error) {
 		"perPage",
 		"page",
 		"pageCount",
-		"failedRefundCount",
+		"total_volume",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -245,53 +245,53 @@ func (o *RefundListResponseMeta) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varRefundListResponseMeta := _RefundListResponseMeta{}
+	varMetaWithVolume := _MetaWithVolume{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRefundListResponseMeta)
+	err = decoder.Decode(&varMetaWithVolume)
 
 	if err != nil {
 		return err
 	}
 
-	*o = RefundListResponseMeta(varRefundListResponseMeta)
+	*o = MetaWithVolume(varMetaWithVolume)
 
 	return err
 }
 
-type NullableRefundListResponseMeta struct {
-	value *RefundListResponseMeta
+type NullableMetaWithVolume struct {
+	value *MetaWithVolume
 	isSet bool
 }
 
-func (v NullableRefundListResponseMeta) Get() *RefundListResponseMeta {
+func (v NullableMetaWithVolume) Get() *MetaWithVolume {
 	return v.value
 }
 
-func (v *NullableRefundListResponseMeta) Set(val *RefundListResponseMeta) {
+func (v *NullableMetaWithVolume) Set(val *MetaWithVolume) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableRefundListResponseMeta) IsSet() bool {
+func (v NullableMetaWithVolume) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableRefundListResponseMeta) Unset() {
+func (v *NullableMetaWithVolume) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableRefundListResponseMeta(val *RefundListResponseMeta) *NullableRefundListResponseMeta {
-	return &NullableRefundListResponseMeta{value: val, isSet: true}
+func NewNullableMetaWithVolume(val *MetaWithVolume) *NullableMetaWithVolume {
+	return &NullableMetaWithVolume{value: val, isSet: true}
 }
 
-func (v NullableRefundListResponseMeta) MarshalJSON() ([]byte, error) {
+func (v NullableMetaWithVolume) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableRefundListResponseMeta) UnmarshalJSON(src []byte) error {
+func (v *NullableMetaWithVolume) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
