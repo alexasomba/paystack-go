@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -21,11 +21,12 @@ type Currency string
 
 // List of Currency
 const (
-	GHS Currency = "GHS"
-	KES Currency = "KES"
-	NGN Currency = "NGN"
-	ZAR Currency = "ZAR"
-	USD Currency = "USD"
+	CURRENCY_GHS Currency = "GHS"
+	CURRENCY_KES Currency = "KES"
+	CURRENCY_NGN Currency = "NGN"
+	CURRENCY_ZAR Currency = "ZAR"
+	CURRENCY_USD Currency = "USD"
+	CURRENCY_XOF Currency = "XOF"
 )
 
 // All allowed values of Currency enum
@@ -35,6 +36,7 @@ var AllowedCurrencyEnumValues = []Currency{
 	"NGN",
 	"ZAR",
 	"USD",
+	"XOF",
 }
 
 func (v *Currency) UnmarshalJSON(src []byte) error {

@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -19,6 +19,7 @@ import (
 
 // VerifyResponseDataMetadata struct for VerifyResponseDataMetadata
 type VerifyResponseDataMetadata struct {
+	Int32 *int32
 	MapmapOfStringAny *map[string]interface{}
 	String *string
 }
@@ -26,6 +27,24 @@ type VerifyResponseDataMetadata struct {
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *VerifyResponseDataMetadata) UnmarshalJSON(data []byte) error {
 	var err error
+	// this object is nullable so check if the payload is null or empty string
+	if string(data) == "" || string(data) == "{}" {
+		return nil
+	}
+
+	// try to unmarshal JSON data into Int32
+	err = json.Unmarshal(data, &dst.Int32);
+	if err == nil {
+		jsonInt32, _ := json.Marshal(dst.Int32)
+		if string(jsonInt32) == "{}" { // empty struct
+			dst.Int32 = nil
+		} else {
+			return nil // data stored in dst.Int32, return on the first match
+		}
+	} else {
+		dst.Int32 = nil
+	}
+
 	// try to unmarshal JSON data into MapmapOfStringAny
 	err = json.Unmarshal(data, &dst.MapmapOfStringAny);
 	if err == nil {
@@ -57,6 +76,10 @@ func (dst *VerifyResponseDataMetadata) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src VerifyResponseDataMetadata) MarshalJSON() ([]byte, error) {
+	if src.Int32 != nil {
+		return json.Marshal(&src.Int32)
+	}
+
 	if src.MapmapOfStringAny != nil {
 		return json.Marshal(&src.MapmapOfStringAny)
 	}

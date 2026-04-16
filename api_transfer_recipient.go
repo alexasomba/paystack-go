@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -18,38 +18,39 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
 // TransferRecipientAPIService TransferRecipientAPI service
 type TransferRecipientAPIService service
 
-type ApiTransferrecipientBulkRequest struct {
+type ApiBulkRequest struct {
 	ctx context.Context
 	ApiService *TransferRecipientAPIService
 	transferRecipientBulk *TransferRecipientBulk
 }
 
-func (r ApiTransferrecipientBulkRequest) TransferRecipientBulk(transferRecipientBulk TransferRecipientBulk) ApiTransferrecipientBulkRequest {
+func (r ApiBulkRequest) TransferRecipientBulk(transferRecipientBulk TransferRecipientBulk) ApiBulkRequest {
 	r.transferRecipientBulk = &transferRecipientBulk
 	return r
 }
 
-func (r ApiTransferrecipientBulkRequest) Execute() (*TransferRecipientBulkCreateResponse, *http.Response, error) {
-	return r.ApiService.TransferrecipientBulkExecute(r)
+func (r ApiBulkRequest) Execute() (*TransferRecipientBulkCreateResponse, *http.Response, error) {
+	return r.ApiService.BulkExecute(r)
 }
 
 /*
-TransferrecipientBulk Bulk Create Transfer Recipient
+Bulk Bulk Create Transfer Recipient
 
 Create multiple transfer recipients in batches. A duplicate account number will lead to the retrieval of the existing record.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiTransferrecipientBulkRequest
+ @return ApiBulkRequest
 */
-func (a *TransferRecipientAPIService) TransferrecipientBulk(ctx context.Context) ApiTransferrecipientBulkRequest {
-	return ApiTransferrecipientBulkRequest{
+func (a *TransferRecipientAPIService) Bulk(ctx context.Context) ApiBulkRequest {
+	return ApiBulkRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -57,7 +58,7 @@ func (a *TransferRecipientAPIService) TransferrecipientBulk(ctx context.Context)
 
 // Execute executes the request
 //  @return TransferRecipientBulkCreateResponse
-func (a *TransferRecipientAPIService) TransferrecipientBulkExecute(r ApiTransferrecipientBulkRequest) (*TransferRecipientBulkCreateResponse, *http.Response, error) {
+func (a *TransferRecipientAPIService) BulkExecute(r ApiBulkRequest) (*TransferRecipientBulkCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -65,7 +66,7 @@ func (a *TransferRecipientAPIService) TransferrecipientBulkExecute(r ApiTransfer
 		localVarReturnValue  *TransferRecipientBulkCreateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientBulk")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.Bulk")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -143,31 +144,31 @@ func (a *TransferRecipientAPIService) TransferrecipientBulkExecute(r ApiTransfer
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiTransferrecipientCreateRequest struct {
+type ApiCreateRequest struct {
 	ctx context.Context
 	ApiService *TransferRecipientAPIService
 	transferRecipientCreate *TransferRecipientCreate
 }
 
-func (r ApiTransferrecipientCreateRequest) TransferRecipientCreate(transferRecipientCreate TransferRecipientCreate) ApiTransferrecipientCreateRequest {
+func (r ApiCreateRequest) TransferRecipientCreate(transferRecipientCreate TransferRecipientCreate) ApiCreateRequest {
 	r.transferRecipientCreate = &transferRecipientCreate
 	return r
 }
 
-func (r ApiTransferrecipientCreateRequest) Execute() (*TransferRecipientCreateResponse, *http.Response, error) {
-	return r.ApiService.TransferrecipientCreateExecute(r)
+func (r ApiCreateRequest) Execute() (*TransferRecipientCreateResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-TransferrecipientCreate Create Transfer Recipient
+Create Create Transfer Recipient
 
 Creates a new recipient. A duplicate account number will lead to the retrieval of the existing record.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiTransferrecipientCreateRequest
+ @return ApiCreateRequest
 */
-func (a *TransferRecipientAPIService) TransferrecipientCreate(ctx context.Context) ApiTransferrecipientCreateRequest {
-	return ApiTransferrecipientCreateRequest{
+func (a *TransferRecipientAPIService) Create(ctx context.Context) ApiCreateRequest {
+	return ApiCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -175,7 +176,7 @@ func (a *TransferRecipientAPIService) TransferrecipientCreate(ctx context.Contex
 
 // Execute executes the request
 //  @return TransferRecipientCreateResponse
-func (a *TransferRecipientAPIService) TransferrecipientCreateExecute(r ApiTransferrecipientCreateRequest) (*TransferRecipientCreateResponse, *http.Response, error) {
+func (a *TransferRecipientAPIService) CreateExecute(r ApiCreateRequest) (*TransferRecipientCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -183,7 +184,7 @@ func (a *TransferRecipientAPIService) TransferrecipientCreateExecute(r ApiTransf
 		localVarReturnValue  *TransferRecipientCreateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -261,36 +262,36 @@ func (a *TransferRecipientAPIService) TransferrecipientCreateExecute(r ApiTransf
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiTransferrecipientDeleteRequest struct {
+type ApiDeleteRequest struct {
 	ctx context.Context
 	ApiService *TransferRecipientAPIService
-	code string
+	idOrCode string
 }
 
-func (r ApiTransferrecipientDeleteRequest) Execute() (*TransferRecipientDeleteResponse, *http.Response, error) {
-	return r.ApiService.TransferrecipientDeleteExecute(r)
+func (r ApiDeleteRequest) Execute() (*TransferRecipientDeleteResponse, *http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-TransferrecipientDelete Delete Transfer Recipient
+Delete Delete Transfer Recipient
 
 Delete a transfer recipient (sets the transfer recipient to inactive)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code Transfer recipient code
- @return ApiTransferrecipientDeleteRequest
+ @param idOrCode An ID or code for the recipient whose details you want to receive.
+ @return ApiDeleteRequest
 */
-func (a *TransferRecipientAPIService) TransferrecipientDelete(ctx context.Context, code string) ApiTransferrecipientDeleteRequest {
-	return ApiTransferrecipientDeleteRequest{
+func (a *TransferRecipientAPIService) Delete(ctx context.Context, idOrCode string) ApiDeleteRequest {
+	return ApiDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
-		code: code,
+		idOrCode: idOrCode,
 	}
 }
 
 // Execute executes the request
 //  @return TransferRecipientDeleteResponse
-func (a *TransferRecipientAPIService) TransferrecipientDeleteExecute(r ApiTransferrecipientDeleteRequest) (*TransferRecipientDeleteResponse, *http.Response, error) {
+func (a *TransferRecipientAPIService) DeleteExecute(r ApiDeleteRequest) (*TransferRecipientDeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -298,13 +299,13 @@ func (a *TransferRecipientAPIService) TransferrecipientDeleteExecute(r ApiTransf
 		localVarReturnValue  *TransferRecipientDeleteResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.Delete")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/transferrecipient/{code}"
-	localVarPath = strings.Replace(localVarPath, "{"+"code"+"}", url.PathEscape(parameterValueToString(r.code, "code")), -1)
+	localVarPath := localBasePath + "/transferrecipient/{id_or_code}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id_or_code"+"}", url.PathEscape(parameterValueToString(r.idOrCode, "idOrCode")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -386,36 +387,36 @@ func (a *TransferRecipientAPIService) TransferrecipientDeleteExecute(r ApiTransf
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiTransferrecipientFetchRequest struct {
+type ApiFetchRequest struct {
 	ctx context.Context
 	ApiService *TransferRecipientAPIService
-	code string
+	idOrCode string
 }
 
-func (r ApiTransferrecipientFetchRequest) Execute() (*TransferRecipientFetchResponse, *http.Response, error) {
-	return r.ApiService.TransferrecipientFetchExecute(r)
+func (r ApiFetchRequest) Execute() (*TransferRecipientFetchResponse, *http.Response, error) {
+	return r.ApiService.FetchExecute(r)
 }
 
 /*
-TransferrecipientFetch Fetch Transfer recipient
+Fetch Fetch Transfer recipient
 
 Fetch the details of a transfer recipient
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code Transfer recipient code
- @return ApiTransferrecipientFetchRequest
+ @param idOrCode An ID or code for the recipient whose details you want to receive.
+ @return ApiFetchRequest
 */
-func (a *TransferRecipientAPIService) TransferrecipientFetch(ctx context.Context, code string) ApiTransferrecipientFetchRequest {
-	return ApiTransferrecipientFetchRequest{
+func (a *TransferRecipientAPIService) Fetch(ctx context.Context, idOrCode string) ApiFetchRequest {
+	return ApiFetchRequest{
 		ApiService: a,
 		ctx: ctx,
-		code: code,
+		idOrCode: idOrCode,
 	}
 }
 
 // Execute executes the request
 //  @return TransferRecipientFetchResponse
-func (a *TransferRecipientAPIService) TransferrecipientFetchExecute(r ApiTransferrecipientFetchRequest) (*TransferRecipientFetchResponse, *http.Response, error) {
+func (a *TransferRecipientAPIService) FetchExecute(r ApiFetchRequest) (*TransferRecipientFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -423,13 +424,13 @@ func (a *TransferRecipientAPIService) TransferrecipientFetchExecute(r ApiTransfe
 		localVarReturnValue  *TransferRecipientFetchResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientFetch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.Fetch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/transferrecipient/{code}"
-	localVarPath = strings.Replace(localVarPath, "{"+"code"+"}", url.PathEscape(parameterValueToString(r.code, "code")), -1)
+	localVarPath := localBasePath + "/transferrecipient/{id_or_code}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id_or_code"+"}", url.PathEscape(parameterValueToString(r.idOrCode, "idOrCode")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -511,60 +512,53 @@ func (a *TransferRecipientAPIService) TransferrecipientFetchExecute(r ApiTransfe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiTransferrecipientListRequest struct {
+type ApiListRequest struct {
 	ctx context.Context
 	ApiService *TransferRecipientAPIService
-	useCursor *bool
-	next *string
-	previous *string
 	perPage *int32
 	page *int32
+	from *time.Time
+	to *time.Time
 }
 
-// A flag to indicate if cursor based pagination should be used
-func (r ApiTransferrecipientListRequest) UseCursor(useCursor bool) ApiTransferrecipientListRequest {
-	r.useCursor = &useCursor
-	return r
-}
-
-// An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
-func (r ApiTransferrecipientListRequest) Next(next string) ApiTransferrecipientListRequest {
-	r.next = &next
-	return r
-}
-
-// An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
-func (r ApiTransferrecipientListRequest) Previous(previous string) ApiTransferrecipientListRequest {
-	r.previous = &previous
-	return r
-}
-
-// The number of records to fetch per request
-func (r ApiTransferrecipientListRequest) PerPage(perPage int32) ApiTransferrecipientListRequest {
+// Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
+func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
 	r.perPage = &perPage
 	return r
 }
 
-// The offset to retrieve data from
-func (r ApiTransferrecipientListRequest) Page(page int32) ApiTransferrecipientListRequest {
+// Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
+func (r ApiListRequest) Page(page int32) ApiListRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiTransferrecipientListRequest) Execute() (*TransferRecipientListResponse, *http.Response, error) {
-	return r.ApiService.TransferrecipientListExecute(r)
+// A timestamp from which to start listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+func (r ApiListRequest) From(from time.Time) ApiListRequest {
+	r.from = &from
+	return r
+}
+
+// A timestamp at which to stop listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+func (r ApiListRequest) To(to time.Time) ApiListRequest {
+	r.to = &to
+	return r
+}
+
+func (r ApiListRequest) Execute() (*TransferRecipientListResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-TransferrecipientList List Transfer Recipients
+List List Transfer Recipients
 
 List transfer recipients available on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiTransferrecipientListRequest
+ @return ApiListRequest
 */
-func (a *TransferRecipientAPIService) TransferrecipientList(ctx context.Context) ApiTransferrecipientListRequest {
-	return ApiTransferrecipientListRequest{
+func (a *TransferRecipientAPIService) List(ctx context.Context) ApiListRequest {
+	return ApiListRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -572,7 +566,7 @@ func (a *TransferRecipientAPIService) TransferrecipientList(ctx context.Context)
 
 // Execute executes the request
 //  @return TransferRecipientListResponse
-func (a *TransferRecipientAPIService) TransferrecipientListExecute(r ApiTransferrecipientListRequest) (*TransferRecipientListResponse, *http.Response, error) {
+func (a *TransferRecipientAPIService) ListExecute(r ApiListRequest) (*TransferRecipientListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -580,7 +574,7 @@ func (a *TransferRecipientAPIService) TransferrecipientListExecute(r ApiTransfer
 		localVarReturnValue  *TransferRecipientListResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -591,20 +585,17 @@ func (a *TransferRecipientAPIService) TransferrecipientListExecute(r ApiTransfer
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.useCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "use_cursor", r.useCursor, "form", "")
-	}
-	if r.next != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "form", "")
-	}
-	if r.previous != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "form", "")
-	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
 	}
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	}
+	if r.from != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	}
+	if r.to != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -682,42 +673,42 @@ func (a *TransferRecipientAPIService) TransferrecipientListExecute(r ApiTransfer
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiTransferrecipientUpdateRequest struct {
+type ApiUpdateRequest struct {
 	ctx context.Context
 	ApiService *TransferRecipientAPIService
-	code string
+	idOrCode string
 	transferRecipientUpdate *TransferRecipientUpdate
 }
 
-func (r ApiTransferrecipientUpdateRequest) TransferRecipientUpdate(transferRecipientUpdate TransferRecipientUpdate) ApiTransferrecipientUpdateRequest {
+func (r ApiUpdateRequest) TransferRecipientUpdate(transferRecipientUpdate TransferRecipientUpdate) ApiUpdateRequest {
 	r.transferRecipientUpdate = &transferRecipientUpdate
 	return r
 }
 
-func (r ApiTransferrecipientUpdateRequest) Execute() (*TransferRecipientUpdateResponse, *http.Response, error) {
-	return r.ApiService.TransferrecipientUpdateExecute(r)
+func (r ApiUpdateRequest) Execute() (*TransferRecipientUpdateResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-TransferrecipientUpdate Update Transfer Recipient
+Update Update Transfer Recipient
 
 Update the details of a transfer recipient
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code Transfer recipient code
- @return ApiTransferrecipientUpdateRequest
+ @param idOrCode An ID or code for the recipient whose details you want to receive.
+ @return ApiUpdateRequest
 */
-func (a *TransferRecipientAPIService) TransferrecipientUpdate(ctx context.Context, code string) ApiTransferrecipientUpdateRequest {
-	return ApiTransferrecipientUpdateRequest{
+func (a *TransferRecipientAPIService) Update(ctx context.Context, idOrCode string) ApiUpdateRequest {
+	return ApiUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
-		code: code,
+		idOrCode: idOrCode,
 	}
 }
 
 // Execute executes the request
 //  @return TransferRecipientUpdateResponse
-func (a *TransferRecipientAPIService) TransferrecipientUpdateExecute(r ApiTransferrecipientUpdateRequest) (*TransferRecipientUpdateResponse, *http.Response, error) {
+func (a *TransferRecipientAPIService) UpdateExecute(r ApiUpdateRequest) (*TransferRecipientUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -725,13 +716,13 @@ func (a *TransferRecipientAPIService) TransferrecipientUpdateExecute(r ApiTransf
 		localVarReturnValue  *TransferRecipientUpdateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/transferrecipient/{code}"
-	localVarPath = strings.Replace(localVarPath, "{"+"code"+"}", url.PathEscape(parameterValueToString(r.code, "code")), -1)
+	localVarPath := localBasePath + "/transferrecipient/{id_or_code}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id_or_code"+"}", url.PathEscape(parameterValueToString(r.idOrCode, "idOrCode")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

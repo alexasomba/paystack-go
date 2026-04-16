@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -20,9 +20,9 @@ var _ MappedNullable = &VirtualTerminalCreateDestinationsInner{}
 
 // VirtualTerminalCreateDestinationsInner struct for VirtualTerminalCreateDestinationsInner
 type VirtualTerminalCreateDestinationsInner struct {
-	// The WhatsApp number to receive payment notifications
+	// The Whatsapp phone number to send notifications to
 	Target *string `json:"target,omitempty"`
-	// The name of the associated WhatsApp number
+	// A descriptive label for the destination
 	Name *string `json:"name,omitempty"`
 }
 

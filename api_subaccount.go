@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -18,37 +18,38 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
 // SubaccountAPIService SubaccountAPI service
 type SubaccountAPIService service
 
-type ApiSubaccountCreateRequest struct {
+type ApiCreateRequest struct {
 	ctx context.Context
 	ApiService *SubaccountAPIService
 	subaccountCreate *SubaccountCreate
 }
 
-func (r ApiSubaccountCreateRequest) SubaccountCreate(subaccountCreate SubaccountCreate) ApiSubaccountCreateRequest {
+func (r ApiCreateRequest) SubaccountCreate(subaccountCreate SubaccountCreate) ApiCreateRequest {
 	r.subaccountCreate = &subaccountCreate
 	return r
 }
 
-func (r ApiSubaccountCreateRequest) Execute() (*SubaccountCreateResponse, *http.Response, error) {
-	return r.ApiService.SubaccountCreateExecute(r)
+func (r ApiCreateRequest) Execute() (*SubaccountCreateResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-SubaccountCreate Create Subaccount
+Create Create Subaccount
 
 Create a subacount for a partner
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSubaccountCreateRequest
+ @return ApiCreateRequest
 */
-func (a *SubaccountAPIService) SubaccountCreate(ctx context.Context) ApiSubaccountCreateRequest {
-	return ApiSubaccountCreateRequest{
+func (a *SubaccountAPIService) Create(ctx context.Context) ApiCreateRequest {
+	return ApiCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -56,7 +57,7 @@ func (a *SubaccountAPIService) SubaccountCreate(ctx context.Context) ApiSubaccou
 
 // Execute executes the request
 //  @return SubaccountCreateResponse
-func (a *SubaccountAPIService) SubaccountCreateExecute(r ApiSubaccountCreateRequest) (*SubaccountCreateResponse, *http.Response, error) {
+func (a *SubaccountAPIService) CreateExecute(r ApiCreateRequest) (*SubaccountCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -64,7 +65,7 @@ func (a *SubaccountAPIService) SubaccountCreateExecute(r ApiSubaccountCreateRequ
 		localVarReturnValue  *SubaccountCreateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubaccountAPIService.SubaccountCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubaccountAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -142,36 +143,36 @@ func (a *SubaccountAPIService) SubaccountCreateExecute(r ApiSubaccountCreateRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSubaccountFetchRequest struct {
+type ApiFetchRequest struct {
 	ctx context.Context
 	ApiService *SubaccountAPIService
-	code string
+	idOrCode string
 }
 
-func (r ApiSubaccountFetchRequest) Execute() (*SubaccountFetchResponse, *http.Response, error) {
-	return r.ApiService.SubaccountFetchExecute(r)
+func (r ApiFetchRequest) Execute() (*SubaccountFetchResponse, *http.Response, error) {
+	return r.ApiService.FetchExecute(r)
 }
 
 /*
-SubaccountFetch Fetch Subaccount
+Fetch Fetch Subaccount
 
 Get details of a subaccount on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code The subaccount code you want to fetch
- @return ApiSubaccountFetchRequest
+ @param idOrCode The subaccount ID or code you want to fetch
+ @return ApiFetchRequest
 */
-func (a *SubaccountAPIService) SubaccountFetch(ctx context.Context, code string) ApiSubaccountFetchRequest {
-	return ApiSubaccountFetchRequest{
+func (a *SubaccountAPIService) Fetch(ctx context.Context, idOrCode string) ApiFetchRequest {
+	return ApiFetchRequest{
 		ApiService: a,
 		ctx: ctx,
-		code: code,
+		idOrCode: idOrCode,
 	}
 }
 
 // Execute executes the request
 //  @return SubaccountFetchResponse
-func (a *SubaccountAPIService) SubaccountFetchExecute(r ApiSubaccountFetchRequest) (*SubaccountFetchResponse, *http.Response, error) {
+func (a *SubaccountAPIService) FetchExecute(r ApiFetchRequest) (*SubaccountFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -179,13 +180,13 @@ func (a *SubaccountAPIService) SubaccountFetchExecute(r ApiSubaccountFetchReques
 		localVarReturnValue  *SubaccountFetchResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubaccountAPIService.SubaccountFetch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubaccountAPIService.Fetch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/subaccount/{code}"
-	localVarPath = strings.Replace(localVarPath, "{"+"code"+"}", url.PathEscape(parameterValueToString(r.code, "code")), -1)
+	localVarPath := localBasePath + "/subaccount/{id_or_code}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id_or_code"+"}", url.PathEscape(parameterValueToString(r.idOrCode, "idOrCode")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -267,46 +268,53 @@ func (a *SubaccountAPIService) SubaccountFetchExecute(r ApiSubaccountFetchReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSubaccountListRequest struct {
+type ApiListRequest struct {
 	ctx context.Context
 	ApiService *SubaccountAPIService
 	perPage *int32
 	page *int32
-	active *bool
+	from *time.Time
+	to *time.Time
 }
 
 // Number of records to fetch per request
-func (r ApiSubaccountListRequest) PerPage(perPage int32) ApiSubaccountListRequest {
+func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The offset to retrieve data from
-func (r ApiSubaccountListRequest) Page(page int32) ApiSubaccountListRequest {
+func (r ApiListRequest) Page(page int32) ApiListRequest {
 	r.page = &page
 	return r
 }
 
-// Filter by the state of the subaccounts
-func (r ApiSubaccountListRequest) Active(active bool) ApiSubaccountListRequest {
-	r.active = &active
+// A timestamp from which to start listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+func (r ApiListRequest) From(from time.Time) ApiListRequest {
+	r.from = &from
 	return r
 }
 
-func (r ApiSubaccountListRequest) Execute() (*SubaccountListResponse, *http.Response, error) {
-	return r.ApiService.SubaccountListExecute(r)
+// A timestamp at which to stop listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+func (r ApiListRequest) To(to time.Time) ApiListRequest {
+	r.to = &to
+	return r
+}
+
+func (r ApiListRequest) Execute() (*SubaccountListResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-SubaccountList List Subaccounts
+List List Subaccounts
 
 List subaccounts available on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSubaccountListRequest
+ @return ApiListRequest
 */
-func (a *SubaccountAPIService) SubaccountList(ctx context.Context) ApiSubaccountListRequest {
-	return ApiSubaccountListRequest{
+func (a *SubaccountAPIService) List(ctx context.Context) ApiListRequest {
+	return ApiListRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -314,7 +322,7 @@ func (a *SubaccountAPIService) SubaccountList(ctx context.Context) ApiSubaccount
 
 // Execute executes the request
 //  @return SubaccountListResponse
-func (a *SubaccountAPIService) SubaccountListExecute(r ApiSubaccountListRequest) (*SubaccountListResponse, *http.Response, error) {
+func (a *SubaccountAPIService) ListExecute(r ApiListRequest) (*SubaccountListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -322,7 +330,7 @@ func (a *SubaccountAPIService) SubaccountListExecute(r ApiSubaccountListRequest)
 		localVarReturnValue  *SubaccountListResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubaccountAPIService.SubaccountList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubaccountAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -347,8 +355,11 @@ func (a *SubaccountAPIService) SubaccountListExecute(r ApiSubaccountListRequest)
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
 		r.page = &defaultValue
 	}
-	if r.active != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
+	if r.from != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	}
+	if r.to != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -426,42 +437,42 @@ func (a *SubaccountAPIService) SubaccountListExecute(r ApiSubaccountListRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSubaccountUpdateRequest struct {
+type ApiUpdateRequest struct {
 	ctx context.Context
 	ApiService *SubaccountAPIService
-	code string
+	idOrCode string
 	subaccountUpdate *SubaccountUpdate
 }
 
-func (r ApiSubaccountUpdateRequest) SubaccountUpdate(subaccountUpdate SubaccountUpdate) ApiSubaccountUpdateRequest {
+func (r ApiUpdateRequest) SubaccountUpdate(subaccountUpdate SubaccountUpdate) ApiUpdateRequest {
 	r.subaccountUpdate = &subaccountUpdate
 	return r
 }
 
-func (r ApiSubaccountUpdateRequest) Execute() (*SubaccountUpdateResponse, *http.Response, error) {
-	return r.ApiService.SubaccountUpdateExecute(r)
+func (r ApiUpdateRequest) Execute() (*SubaccountUpdateResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-SubaccountUpdate Update Subaccount
+Update Update Subaccount
 
 Update a subaccount details on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code The subaccount code you want to fetch
- @return ApiSubaccountUpdateRequest
+ @param idOrCode The subaccount ID or code you want to fetch
+ @return ApiUpdateRequest
 */
-func (a *SubaccountAPIService) SubaccountUpdate(ctx context.Context, code string) ApiSubaccountUpdateRequest {
-	return ApiSubaccountUpdateRequest{
+func (a *SubaccountAPIService) Update(ctx context.Context, idOrCode string) ApiUpdateRequest {
+	return ApiUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
-		code: code,
+		idOrCode: idOrCode,
 	}
 }
 
 // Execute executes the request
 //  @return SubaccountUpdateResponse
-func (a *SubaccountAPIService) SubaccountUpdateExecute(r ApiSubaccountUpdateRequest) (*SubaccountUpdateResponse, *http.Response, error) {
+func (a *SubaccountAPIService) UpdateExecute(r ApiUpdateRequest) (*SubaccountUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -469,13 +480,13 @@ func (a *SubaccountAPIService) SubaccountUpdateExecute(r ApiSubaccountUpdateRequ
 		localVarReturnValue  *SubaccountUpdateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubaccountAPIService.SubaccountUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubaccountAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/subaccount/{code}"
-	localVarPath = strings.Replace(localVarPath, "{"+"code"+"}", url.PathEscape(parameterValueToString(r.code, "code")), -1)
+	localVarPath := localBasePath + "/subaccount/{id_or_code}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id_or_code"+"}", url.PathEscape(parameterValueToString(r.idOrCode, "idOrCode")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

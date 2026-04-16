@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -18,61 +18,90 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
 // SettlementAPIService SettlementAPI service
 type SettlementAPIService service
 
-type ApiSettlementsFetchRequest struct {
+type ApiFetchRequest struct {
 	ctx context.Context
 	ApiService *SettlementAPIService
 	perPage *int32
 	page *int32
+	from *time.Time
+	to *time.Time
+	status *string
+	subaccount *string
 }
 
-// The number of records to fetch per request
-func (r ApiSettlementsFetchRequest) PerPage(perPage int32) ApiSettlementsFetchRequest {
+// Number of records to fetch per page
+func (r ApiFetchRequest) PerPage(perPage int32) ApiFetchRequest {
 	r.perPage = &perPage
 	return r
 }
 
-// The offset to retrieve data from
-func (r ApiSettlementsFetchRequest) Page(page int32) ApiSettlementsFetchRequest {
+// The section to retrieve
+func (r ApiFetchRequest) Page(page int32) ApiFetchRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiSettlementsFetchRequest) Execute() (*Response, *http.Response, error) {
-	return r.ApiService.SettlementsFetchExecute(r)
+// The start date
+func (r ApiFetchRequest) From(from time.Time) ApiFetchRequest {
+	r.from = &from
+	return r
+}
+
+// The end date
+func (r ApiFetchRequest) To(to time.Time) ApiFetchRequest {
+	r.to = &to
+	return r
+}
+
+// Filter by status
+func (r ApiFetchRequest) Status(status string) ApiFetchRequest {
+	r.status = &status
+	return r
+}
+
+// Filter by subaccount ID. Set to &#x60;none&#x60; to return only main account settlements.
+func (r ApiFetchRequest) Subaccount(subaccount string) ApiFetchRequest {
+	r.subaccount = &subaccount
+	return r
+}
+
+func (r ApiFetchRequest) Execute() (*SettlementListResponse, *http.Response, error) {
+	return r.ApiService.FetchExecute(r)
 }
 
 /*
-SettlementsFetch List Settlements
+Fetch List Settlements
 
 List settlements made to your settlement accounts
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSettlementsFetchRequest
+ @return ApiFetchRequest
 */
-func (a *SettlementAPIService) SettlementsFetch(ctx context.Context) ApiSettlementsFetchRequest {
-	return ApiSettlementsFetchRequest{
+func (a *SettlementAPIService) Fetch(ctx context.Context) ApiFetchRequest {
+	return ApiFetchRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return Response
-func (a *SettlementAPIService) SettlementsFetchExecute(r ApiSettlementsFetchRequest) (*Response, *http.Response, error) {
+//  @return SettlementListResponse
+func (a *SettlementAPIService) FetchExecute(r ApiFetchRequest) (*SettlementListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *SettlementListResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SettlementAPIService.SettlementsFetch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SettlementAPIService.Fetch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -88,6 +117,18 @@ func (a *SettlementAPIService) SettlementsFetchExecute(r ApiSettlementsFetchRequ
 	}
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	}
+	if r.from != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	}
+	if r.to != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	}
+	if r.status != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+	}
+	if r.subaccount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "subaccount", r.subaccount, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -165,27 +206,55 @@ func (a *SettlementAPIService) SettlementsFetchExecute(r ApiSettlementsFetchRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSettlementsTransactionRequest struct {
+type ApiTransactionRequest struct {
 	ctx context.Context
 	ApiService *SettlementAPIService
 	id int32
+	perPage *int32
+	page *int32
+	from *time.Time
+	to *time.Time
 }
 
-func (r ApiSettlementsTransactionRequest) Execute() (*Response, *http.Response, error) {
-	return r.ApiService.SettlementsTransactionExecute(r)
+// Number of records to fetch per page
+func (r ApiTransactionRequest) PerPage(perPage int32) ApiTransactionRequest {
+	r.perPage = &perPage
+	return r
+}
+
+// The section to retrieve
+func (r ApiTransactionRequest) Page(page int32) ApiTransactionRequest {
+	r.page = &page
+	return r
+}
+
+// The start date
+func (r ApiTransactionRequest) From(from time.Time) ApiTransactionRequest {
+	r.from = &from
+	return r
+}
+
+// The end date
+func (r ApiTransactionRequest) To(to time.Time) ApiTransactionRequest {
+	r.to = &to
+	return r
+}
+
+func (r ApiTransactionRequest) Execute() (*SettlementTransactionsResponse, *http.Response, error) {
+	return r.ApiService.TransactionExecute(r)
 }
 
 /*
-SettlementsTransaction Fetch Settlement Transactions
+Transaction Fetch Settlement Transactions
 
 Get the transactions that make up a particular settlement
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The settlement ID in which you want to fetch its transactions
- @return ApiSettlementsTransactionRequest
+ @return ApiTransactionRequest
 */
-func (a *SettlementAPIService) SettlementsTransaction(ctx context.Context, id int32) ApiSettlementsTransactionRequest {
-	return ApiSettlementsTransactionRequest{
+func (a *SettlementAPIService) Transaction(ctx context.Context, id int32) ApiTransactionRequest {
+	return ApiTransactionRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -193,16 +262,16 @@ func (a *SettlementAPIService) SettlementsTransaction(ctx context.Context, id in
 }
 
 // Execute executes the request
-//  @return Response
-func (a *SettlementAPIService) SettlementsTransactionExecute(r ApiSettlementsTransactionRequest) (*Response, *http.Response, error) {
+//  @return SettlementTransactionsResponse
+func (a *SettlementAPIService) TransactionExecute(r ApiTransactionRequest) (*SettlementTransactionsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *SettlementTransactionsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SettlementAPIService.SettlementsTransaction")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SettlementAPIService.Transaction")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -214,6 +283,18 @@ func (a *SettlementAPIService) SettlementsTransactionExecute(r ApiSettlementsTra
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.perPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	}
+	if r.from != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	}
+	if r.to != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

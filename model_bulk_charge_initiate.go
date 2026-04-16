@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -24,13 +24,13 @@ var _ MappedNullable = &BulkChargeInitiate{}
 type BulkChargeInitiate struct {
 	// Customer's card authorization code
 	Authorization string `json:"authorization"`
-	// Amount to charge on the authorization
+	// Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). 
 	Amount int32 `json:"amount"`
 	// A unique identifier containing lowercase letters `(a-z)`, digits `(0-9)` and these symbols: dash (`-`), underscore(`_`) 
 	Reference *string `json:"reference,omitempty"`
 	// A flag to indicate if you want us to try recouping lower amounts when the customer has insufficient fund
 	AttemptPartialDebit *bool `json:"attempt_partial_debit,omitempty"`
-	// Minimum amount to charge if the attempt_partial_debit flag is set
+	// Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Minimum amount to charge if the attempt_partial_debit flag is set. 
 	AtLeast *int32 `json:"at_least,omitempty"`
 	// JSON object of custom data
 	Metadata map[string]interface{} `json:"metadata,omitempty"`

@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -28,7 +28,7 @@ type OrderItems struct {
 	Type string `json:"type"`
 	// The number of items to get
 	Quantity int32 `json:"quantity"`
-	// The cost of the item
+	// Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). 
 	Amount int32 `json:"amount"`
 }
 
